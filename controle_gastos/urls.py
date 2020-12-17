@@ -1,7 +1,6 @@
 """controle_gastos URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    https://docs.djangoproject.com/en/2.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,9 +14,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contas.views import home
+from contas.views import home, listagem, nova_transacao, update, delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
+    path('', listagem, name='url_listagem'),
+    path('nova/',  nova_transacao, name='url_nova'),
+    path('update/<int:pk>/', update, name='url_update'),
+    path('delete/<int:pk>/', delete, name='url_delete'),
+    path('home/',  home)
 ]
